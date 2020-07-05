@@ -1,5 +1,4 @@
-import { config } from 'https://deno.land/x/dotenv/mod.ts'
-import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
+import { getIssueFromJira } from '../services/Jira/issueService.ts';
 
 interface IIssue {
     key: string
@@ -7,18 +6,8 @@ interface IIssue {
 }
 
 const getIssueData = async (id: string) => {
-    const JiraBaseUrl = config().JIRABASEURL
-    const issueUrl = `${JiraBaseUrl}issue/${id}`
 
-    const jiraToken: string = base64.fromUint8Array(new TextEncoder().encode(config().JIRATOKEN));
-
-    const res = await fetch (issueUrl, {
-        method: 'GET',
-        headers: {
-        'Authorization': `Basic ${jiraToken}`,
-        'Accept': 'application/json'
-        }
-    })
+    const res = await getIssueFromJira(id)
 
     if (res.status === 200) {
         const data = await res.json()    

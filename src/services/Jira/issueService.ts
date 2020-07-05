@@ -1,7 +1,7 @@
 import { config } from 'https://deno.land/x/dotenv/mod.ts'
 import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
 
-const getIssueData = async (id: string) => {
+const getIssueFromJira = async (id: string) => {
     const JiraBaseUrl = config().JIRABASEURL
     const issueUrl = `${JiraBaseUrl}issue/${id}`
 
@@ -19,4 +19,4 @@ const getIssueData = async (id: string) => {
 
 }
 
-export {getIssueData}
+export {getIssueFromJira}

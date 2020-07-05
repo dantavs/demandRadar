@@ -1,5 +1,5 @@
 import { Router } from 'https://deno.land/x/oak/mod.ts'
-import { getIssue } from '../src/controllers/IssueControllers/getIssue.ts'
+import { getIssue } from '../src/controllers/issueController.ts'
 
 const router = new Router
 
