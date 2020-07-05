@@ -1,3 +1,4 @@
+// simples comentario para teste de pull request
 import { config } from 'https://deno.land/x/dotenv/mod.ts'
 import { getIssueData } from '../../models/issueModel.ts'
 
