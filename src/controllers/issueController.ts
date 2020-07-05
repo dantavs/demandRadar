@@ -1,4 +1,7 @@
-import { getIssueData } from '../models/issueModel.ts'
+// simples comentario para teste de pull request
+import { config } from 'https://deno.land/x/dotenv/mod.ts'
+import { getIssueData } from '../../models/issueModel.ts'
+
 
 const getIssue = async ({params, response } : {params: {id: string}; response: any}) => {
 
