@@ -1,5 +1,5 @@
 import { expect } from "https://deno.land/x/expect/expect.ts";
-import { getIssueData } from '../src/models/issueModel.ts'
+import { getIssueData } from '../../src/models/issueModel.ts'
 
 const validIssueIds = [
     'RDI-1'
