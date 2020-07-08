@@ -5,8 +5,6 @@ const getIssueFromJira = async (id: string) => {
     const JiraBaseUrl = config().JIRABASEURL
     const issueUrl = `${JiraBaseUrl}issue/${id}`
 
-    console.log('URL: ', issueUrl)
-
     const jiraToken: string = base64.fromUint8Array(new TextEncoder().encode(config().JIRATOKEN));
 
     const res = await fetch (issueUrl, {

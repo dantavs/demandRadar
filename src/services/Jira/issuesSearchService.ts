@@ -1,7 +1,7 @@
 import { config } from 'https://deno.land/x/dotenv/mod.ts'
 import * as base64 from "https://denopkg.com/chiefbiiko/base64/mod.ts";
 
-const getIssuesListFromJira = async (id: string) => {
+const getIssuesListFromJira = async () => {
     const JiraBaseUrl = config().JIRABASEURL
     const issueUrl = `${JiraBaseUrl}search`
 
@@ -14,8 +14,6 @@ const getIssuesListFromJira = async (id: string) => {
             ,"summary"
         ]
     }`
-
-    console.log('queryData: ', bodyData)
 
     const res = await fetch (issueUrl, {
         method: 'POST',
