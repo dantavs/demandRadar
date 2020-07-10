@@ -1,5 +1,5 @@
 import { Router } from 'https://deno.land/x/oak/mod.ts'
-import { getIssue } from '../src/controllers/issueController.ts'
+import { getIssue, getIssuesList } from '../src/controllers/issueController.ts'
 
 const router = new Router
 
@@ -9,5 +9,6 @@ router.get('/api/v1/test', (context) => {
 })
 
 router.get('/api/v1/getIssue/:id', getIssue)
+router.get('/api/v1/getIssuesList', getIssuesList)
 
 export default router

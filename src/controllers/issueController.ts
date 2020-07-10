@@ -1,6 +1,6 @@
 // simples comentario para teste de pull request
-import { config } from 'https://deno.land/x/dotenv/mod.ts'
-import { getIssueData } from '../../models/issueModel.ts'
+import { getIssueData } from '../models/issueModel.ts'
+import { getIssuesListData } from '../models/issuesListModel.ts'
 
 
 const getIssue = async ({params, response } : {params: {id: string}; response: any}) => {
@@ -11,4 +11,12 @@ const getIssue = async ({params, response } : {params: {id: string}; response: a
     response.body = issue
 }
 
-export { getIssue }
+const getIssuesList = async ({params, response } : {params: {}; response: any}) => {
+
+    let issue = await getIssuesListData()
+
+    response.status = 200
+    response.body = issue
+}
+
+export { getIssue, getIssuesList }

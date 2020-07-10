@@ -1,9 +1,5 @@
 import { getIssueFromJira } from '../services/Jira/issueService.ts';
-
-interface IIssue {
-    key: string
-    summary: string
-}
+import { Issue } from '../classes/issue.ts'
 
 const getIssueData = async (id: string) => {
 
@@ -12,10 +8,7 @@ const getIssueData = async (id: string) => {
     if (res.status === 200) {
         const data = await res.json()    
 
-        const issue: IIssue = {
-            key : data.key
-            ,summary : data.fields.summary
-        }
+        const issue = new Issue(data)
     
         return {'status': 0, 'issue': issue}    
     }else{
