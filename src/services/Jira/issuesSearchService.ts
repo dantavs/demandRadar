@@ -8,10 +8,13 @@ const getIssuesListFromJira = async () => {
     const jiraToken: string = base64.fromUint8Array(new TextEncoder().encode(config().JIRATOKEN));
 
     const bodyData: string = `{
-        "jql": "key = RDI-1"
+        "jql": "issuetype = Epic and status not in (10000) and project in (RDI)"
         ,"fields": [
             "key"
             ,"summary"
+            ,"status"
+            ,"customfield_10011"
+            ,"project"
         ]
     }`
 

@@ -14,7 +14,7 @@ const getIssuesListData = async () => {
             const issue = new Issue(item)
             issuesList.push(issue)              
         }
-    
+      
         return {'status': 0, 'issue': issuesList}    
     }else{
         await res.body?.cancel()
