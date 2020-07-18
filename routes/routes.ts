@@ -9,6 +9,6 @@ router.get('/api/v1/test', (context) => {
 })
 
 router.get('/api/v1/getIssue/:id', getIssue)
-router.get('/api/v1/getIssuesList', getIssuesList)
+router.get('/api/v1/getIssuesList/:searchContext', getIssuesList)
 
 export default router

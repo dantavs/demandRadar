@@ -11,12 +11,17 @@ const getIssue = async ({params, response } : {params: {id: string}; response: a
     response.body = issue
 }
 
-const getIssuesList = async ({params, response } : {params: {}; response: any}) => {
+const getIssuesList = async ({params, response } : {params: {searchContext: string}; response: any}) => {
 
-    let issue = await getIssuesListData()
+    let issue = await getIssuesListData(params.searchContext)
 
-    response.status = 200
-    response.body = issue
+    if (issue.status === 0){
+        response.status = 200
+        response.body = issue    
+    } else {
+        response.status = 500
+        response.body = 'Internal Error'    
+    }
 }
 
 export { getIssue, getIssuesList }
