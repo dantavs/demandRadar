@@ -1,4 +1,4 @@
-import { getIssueFromJira } from '../services/Jira/issueService.ts';
+import { getIssueFromJira } from '../services/issueService.ts';
 import { Issue } from '../classes/issue.ts'
 
 const getIssueData = async (id: string) => {

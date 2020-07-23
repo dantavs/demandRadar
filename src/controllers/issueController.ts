@@ -1,7 +1,7 @@
 //import { getQuery } from 'https://deno.land/x/oak/helpers.ts'
 import { getIssueData } from '../models/issueModel.ts'
 import { JQL} from '../classes/jql.ts'
-import { getIssuesListData } from '../models/issuesListModel.ts'
+import { getIssuesListData, getIssuesListDataByContext } from '../models/issuesListModel.ts'
 
 
 const getIssue = async ({params, response } : {params: {id: string}; response: any}) => {
@@ -26,13 +26,14 @@ const getIssuesList = async ({params, response } : {params: {searchContext: stri
 }
 
 const getIssuesListByContext = async ({request, response}: {request: any, response: any}) => {
-    const context: string = request.url.searchParams.get('context')    
+    const project: string = request.url.searchParams.get('project')    
     const id: string = request.url.searchParams.get('id')    
 
-    const jqlQuery = new JQL(context, id)
+    const issuesList = await getIssuesListDataByContext(project, id)
 
     response.status = 200
-    response.body = {'context': context, 'id': id, 'jql': jqlQuery.query}
+    response.body = issuesList
+
 }
 
 export { getIssue, getIssuesList, getIssuesListByContext }
